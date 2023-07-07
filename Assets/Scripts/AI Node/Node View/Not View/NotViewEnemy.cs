@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI/Not View")]
+[TaskCategory("AI Node/Not View")]
 public class NotViewEnemy : AINodeView
 {
     public override TaskStatus OnUpdate()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI Node")]
+[TaskCategory("AI")]
 public class AINodeDistance : AINode
 {
     public override void OnStart()

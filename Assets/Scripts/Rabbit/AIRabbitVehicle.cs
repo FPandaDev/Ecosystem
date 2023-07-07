@@ -25,6 +25,7 @@ public class AIRabbitVehicle : AICharacterVehicle
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        CalculatePositionWander();
     }
 
     public override void MoveToFood()
@@ -34,15 +35,33 @@ public class AIRabbitVehicle : AICharacterVehicle
 
     public override void MoveToMate()
     {
+        animal.ChangeState(State.SEARCHMATE);
         MoveToPosition(((AIRabbitSensor)sensor).mateTarget.transform.position);
+    }
+
+    public override void Wander()
+    {
+        animal.ChangeState(State.WANDER);
+        MoveToPositionWander();
+    }
+
+    public override void SearchFood()
+    {
+        animal.ChangeState(State.SEARCHFOOD);
+        MoveToPositionWander();
+    }
+
+    public override void SearchMate()
+    {
+        animal.ChangeState(State.SEARCHMATE);
+        MoveToPositionWander();
     }
 
     // WANDER FUNCTIONS //
     public override void MoveToPositionWander()
     {
         agent.isStopped = false;
-        animal.ChangeState(State.WANDER);
-
+        
         float dist = (transform.position - PositionWander).magnitude;
 
         if (dist <= 2f)

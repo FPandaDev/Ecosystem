@@ -4,7 +4,7 @@ using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
 [TaskCategory("AI Node/Move")]
-public class VehicleWander : AINodeVehicle
+public class VehicleSearchMate : AINodeVehicle
 {
     public override void OnStart()
     {
@@ -18,7 +18,7 @@ public class VehicleWander : AINodeVehicle
 
         if (aiCharacterControl is AIRabbitVehicle)
         {
-            ((AIRabbitVehicle)aiCharacterControl).Wander();
+            ((AIRabbitVehicle)aiCharacterControl).SearchMate();
         }
             
         return TaskStatus.Success;

@@ -30,13 +30,19 @@ public class RabbitMale : Rabbit
 
         stateCurrent = newState;
 
+        if (newState != State.REPRODUCTION)
+        {
+            timeToPregmant = 0f;
+            isReproduction = false;
+        }
+
         switch (newState)
         {
             case State.EATING:
                 break;
 
             case State.REPRODUCTION:
-                ((AIRabbitSensor)aiSensor).mateTarget.GetComponent<RabbitFemale>().SetViewMate(this.transform);
+                ((AIRabbitSensor)aiSensor).mateTarget.GetComponent<RabbitFemale>().SetViewMate(this);
                 isReproduction = true;
                 timeToPregmant = 0f;
                 break;

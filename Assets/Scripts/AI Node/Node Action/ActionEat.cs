@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI/Action")]
+[TaskCategory("AI Node/Action")]
 public class ActionEat : AINodeAction
 {
     public override TaskStatus OnUpdate()

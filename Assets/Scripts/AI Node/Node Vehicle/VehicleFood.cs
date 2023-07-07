@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI/Move")]
+[TaskCategory("AI Node/Move")]
 public class VehicleFood : AINodeVehicle
 {
     public override void OnStart()

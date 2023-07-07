@@ -28,6 +28,9 @@ public class AICharacterVehicle : AICharacterControl
 
     public virtual void MoveToFood() { }
     public virtual void MoveToMate() { }
+    public virtual void SearchFood() { }
+    public virtual void SearchMate() { }
+    public virtual void Wander() { }
     public virtual void MoveToPositionWander() { }
     public virtual void CalculatePositionWander() { }
 }

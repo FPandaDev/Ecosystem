@@ -15,7 +15,7 @@ public class RabbitFemale : Rabbit
     public float heatCurrent;
     public float gestationCurrent;
 
-    private Transform target;
+    private RabbitMale target;
 
     private void Update()
     {
@@ -69,10 +69,15 @@ public class RabbitFemale : Rabbit
                 isPregnant = true;
                 isReproduction = false;
             }
+
+            if (!target.isReproduction)
+            {
+                isReproduction = false;
+            }
         }
     }
 
-    public void SetViewMate(Transform _target)
+    public void SetViewMate(RabbitMale _target)
     {
         target = _target;
         ChangeState(State.REPRODUCTION);      
@@ -80,7 +85,7 @@ public class RabbitFemale : Rabbit
 
     private void RotateMate()
     {
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = target.transform.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }

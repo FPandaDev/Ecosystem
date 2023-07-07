@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI Node")]
+[TaskCategory("AI")]
 public class AINodeCheck : AINode
 {
     protected AICharacterAction aiCharacterAction;

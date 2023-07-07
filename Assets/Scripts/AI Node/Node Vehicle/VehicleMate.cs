@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI/Move")]
+[TaskCategory("AI Node/Move")]
 public class VehicleMate : AINodeVehicle
 {
     public override void OnStart()
@@ -16,7 +16,12 @@ public class VehicleMate : AINodeVehicle
         //if (((AIRabbitVehicle)aiCharacterControl).animal.IsDead)
         //    return TaskStatus.Failure;
 
-        ((AIRabbitVehicle)aiCharacterControl).MoveToMate();
+        if (aiCharacterControl is AIRabbitVehicle)
+        {
+            ((AIRabbitVehicle)aiCharacterControl).MoveToMate();
+        }
+
+            
         return TaskStatus.Success;
     }
 }

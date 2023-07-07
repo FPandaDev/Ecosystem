@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI/View")]
+[TaskCategory("AI Node/View")]
 public class ViewFood : AINodeView
 {
     public override TaskStatus OnUpdate()

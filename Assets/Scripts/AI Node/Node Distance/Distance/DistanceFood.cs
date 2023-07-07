@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI/Distance")]
+[TaskCategory("AI Node/Distance")]
 public class DistanceFood : AINodeDistance
 {
     public override TaskStatus OnUpdate()

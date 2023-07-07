@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-[TaskCategory("AI/Check")]
+[TaskCategory("AI Node/Check")]
 public class CheckReproduction : AINodeCheck
 {
     public override TaskStatus OnUpdate()
