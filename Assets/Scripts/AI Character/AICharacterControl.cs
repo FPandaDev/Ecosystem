@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class AICharacterControl : MonoBehaviour
 {
-    public Animal _animal;
-    public AISensor _sensor;
+    public Animal animal;
+    public AISensor sensor;
 
-    public virtual void LoadComponent()
+    protected virtual void LoadComponent()
     {
-        _animal = GetComponent<Animal>();
-        _sensor = GetComponent<AISensor>();
+        animal = GetComponent<Animal>();
+        sensor = GetComponent<AISensor>();
     }
 }

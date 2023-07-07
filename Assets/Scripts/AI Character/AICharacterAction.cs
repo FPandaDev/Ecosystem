@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class AICharacterAction : AICharacterControl
 {
-    public override void LoadComponent()
+    protected override void LoadComponent()
     {
         base.LoadComponent();
     }

@@ -16,76 +16,31 @@ public class AIRabbitVehicle : AICharacterVehicle
     protected int indexPath = 0;
     protected float elapsed = 0.0f;
 
-    private AISensorRabbit sensor;
-
     private void Start()
     {
-        this.LoadComponent();       
+        LoadComponent();
+        ResetArray();
     }
 
-    public override void LoadComponent()
+    protected override void LoadComponent()
     {
         base.LoadComponent();
-        indexPath = 0;
-        ResetArray();
-
-        sensor = _sensor as AISensorRabbit;
     }
 
-    public void MoveToEnemy()
-    {
-        //if (_sensor.enemyRef != null)
-        //{
-        //    this.MoveToPosition(_sensor.enemyRef.transform.position);
-        //}
+    public override void MoveToFood()
+    {     
+        MoveToPosition(((AIRabbitSensor)sensor).foodTarget.transform.position);
     }
 
-    public void MoveToFood()
+    public override void MoveToMate()
     {
-        //AISensorRabbit sensor = _sensor as AISensorRabbit;
-
-        //if (sensor.foodTarget != null)
-        //{
-            _animal.state = State.SEARCHFOOD;
-            MoveToPosition(sensor.foodTarget.transform.position);
-        //}
-    }
-    public void MoveToMate()
-    {
-        //AISensorRabbit sensor = _sensor as AISensorRabbit;
-
-        //if (sensor.mateTarget != null)
-        //{
-            _animal.state = State.SEARCHMATE;
-            MoveToPosition(sensor.mateTarget.transform.position);
-        //}
-    }
-
-    public void EvadeToPosition()
-    {
-        //AISensorRabbit sensor = _sensor as AISensorRabbit;
-
-        //if (sensor.predatorTarget != null)
-        //{
-            _animal.state = State.EVADE;
-            EvadeToPosition(sensor.predatorTarget.transform.position);
-        //}
-    }
-
-    public override void MoveToPosition(Vector3 target)
-    {
-        _agent.SetDestination(target);
-    }
-
-    public override void EvadeToPosition(Vector3 target)
-    {
-        base.EvadeToPosition(target);
+        MoveToPosition(((AIRabbitSensor)sensor).mateTarget.transform.position);
     }
 
     // WANDER FUNCTIONS //
     public override void MoveToPositionWander()
     {
-        _animal.state = State.WANDER;
+        animal.ChangeState(State.WANDER);
 
         float dist = (transform.position - PositionWander).magnitude;
 
@@ -106,24 +61,23 @@ public class AIRabbitVehicle : AICharacterVehicle
     }
 
     public override void CalculatePositionWander()
-    {
-        //if (_sensorEye.ViewEnemy != null)
+    {      
         RandomPoint(transform.position, RangleWander, out PositionWander);
     }
 
     public void UpdatePath(Vector3 position)
     {
-        if (!this._agent.enabled) return;
+        if (!this.agent.enabled) return;
 
         elapsed += Time.deltaTime;
 
         if (elapsed > 1f)
         {
             elapsed -= 1.0f;
-            _agent.ResetPath();
+            agent.ResetPath();
             NavMeshPath path2 = new NavMeshPath();
             NavMesh.CalculatePath(transform.position, position, NavMesh.AllAreas, path2);
-            _agent.SetPath(path2);
+            agent.SetPath(path2);
         }
     }
 
@@ -157,25 +111,4 @@ public class AIRabbitVehicle : AICharacterVehicle
             arrayRate[i] = Random.Range(10, 15);
         }
     }
-
-    /*public override Vector3 CalculatePositionEvade()
-    {
-        Vector3 back = Vector3.zero;
-        Ray ray = new Ray(transform.position, transform.forward);
-
-        RaycastHit rayHit;
-
-        if (Physics.Raycast(ray, out rayHit, 5))
-        {
-            Vector3 bounceDirection = Vector3.Reflect(transform.forward, rayHit.normal);
-            back = rayHit.point + bounceDirection * 2;
-        }
-
-        return back;
-    }
-
-    public override void MoveToPositionCommand(Vector3 position)
-    {
-        UpdatePath(position);
-    }*/
 }

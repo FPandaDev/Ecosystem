@@ -5,17 +5,17 @@ using UnityEngine.AI;
 
 public class AICharacterVehicle : AICharacterControl
 {
-    public NavMeshAgent _agent;
+    public NavMeshAgent agent;
 
-    public override void LoadComponent()
+    protected override void LoadComponent()
     {
         base.LoadComponent();
-        _agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     public virtual void MoveToPosition(Vector3 target)
     {
-        _agent.SetDestination(target);
+        agent.SetDestination(target);
     }
 
     public virtual void EvadeToPosition(Vector3 target)
@@ -23,12 +23,11 @@ public class AICharacterVehicle : AICharacterControl
         Vector3 dir = transform.position - target;
         Vector3 newPos = transform.position + dir.normalized * 3;
 
-        _agent.SetDestination(newPos);
+        agent.SetDestination(newPos);
     }
 
-    public virtual void CalculatePositionWander() { }
+    public virtual void MoveToFood() { }
+    public virtual void MoveToMate() { }
     public virtual void MoveToPositionWander() { }
-
-    //public virtual Vector3 CalculatePositionEvade() { return Vector3.zero; }
-    //public virtual void MoveToPositionCommand(Vector3 position) { }
+    public virtual void CalculatePositionWander() { }
 }

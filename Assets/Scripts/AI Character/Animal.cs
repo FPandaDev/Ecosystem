@@ -1,38 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public enum State { WANDER, EATING, REPRODUCTION, SEARCHFOOD, SEARCHMATE, EVADE}
-public enum Age { CHILD, YOUNG, OLD }
+public enum State { WANDER, EATING, REPRODUCTION, SEARCHFOOD, SEARCHMATE, EVADE }
 
 public class Animal : MonoBehaviour
 {
     [Header("ATTRIBUTES")]
-    public State state;
-    public Age age;
+    [SerializeField] public State stateCurrent;
 
-    [SerializeField] protected float ageTime = 0f;
-    [SerializeField] protected float healtMax = 100f;
-    [SerializeField] protected float speedMin = 1.5f;
-    [SerializeField] protected float speedMax = 3.5f;
-    [SerializeField] protected float hunger = 100f;
-    [SerializeField] protected float thirst = 100f;
+    [Header("HUNGER")]
+    [SerializeField] protected float hungerLevel = 100f;
+    [SerializeField] protected float hungerLevelMin = 30f;
+    [SerializeField] protected float hungerLevelMax = 85f;
 
-    [SerializeField] protected float staminaMin = 40f;
-    [SerializeField] protected float staminaMax = 100f;
-    [SerializeField] protected float timeToPregmant = 3f;
-    
+    public float hungerCurrent;
 
-    [Header("UI")]
-    [SerializeField] protected Slider sliderHungry;
-   
+    public bool hasHunger;
+    public bool hasHungeHigh;
 
-    protected float healthCurrent;
-    protected float hungerLevel;
-    protected float thirstLevel;
-    protected float staminaCurrent;
-    protected float timerP;
+    [Header("IDLE")]
+    [SerializeField] protected float timeToPregmant = 5f;
 
-    public bool SearchHunger { get { return hungerLevel < 80f; } }
-    public bool HungerPriority { get { return hungerLevel < 30f; } }
-    public bool IsDead { get { return healthCurrent <= 0; } }
+    protected virtual void LoadComponent() { }
+
+    protected virtual void UpdateHunger()
+    {
+        if (stateCurrent == State.EATING)
+        {
+            hungerCurrent += Time.deltaTime;
+
+            if (hungerCurrent >= hungerLevel)
+            {
+                hasHunger = false;
+            }
+        }
+        else
+        {
+            hungerCurrent -= Time.deltaTime;
+
+            hasHunger = hungerCurrent <= hungerLevelMax;              
+            hasHungeHigh = hungerCurrent <= hungerLevelMin;            
+        }
+    }
+
+    public void ChangeState(State newState)
+    {
+        if (newState == stateCurrent) { return; }
+
+        stateCurrent = newState;
+    }
 }

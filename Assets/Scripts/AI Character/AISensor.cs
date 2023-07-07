@@ -5,8 +5,8 @@ using UnityEngine;
 public class AISensor : MonoBehaviour
 {
     [Header("Sensor Settings")]
-    [Range(5f, 180f)]
-    public float angle = 60f;
+    public bool isViewGizmo;
+    [Range(5f, 180f)] public float angle = 60f;
     public float distance = 30f;
     public float height = 1.0f;
 
@@ -15,8 +15,6 @@ public class AISensor : MonoBehaviour
     public int scanFrequency = 30;
     public LayerMask layers;
     public LayerMask obstacle;
-
-    public bool isViewGizmo;
 
     //private List<GameObject> listObjects = new List<GameObject>();
 
@@ -30,7 +28,7 @@ public class AISensor : MonoBehaviour
 
     public virtual void LoadComponent()
     {
-        scanInterval = 1.0f / scanFrequency;     
+        scanInterval = 1.0f / scanFrequency;
         animal = GetComponent<Animal>();
     }
 
@@ -75,8 +73,8 @@ public class AISensor : MonoBehaviour
         // Check height
         Vector3 origin = transform.position;
         Vector3 dest = obj.transform.position;
-        Vector3 direction = dest - origin; 
-        
+        Vector3 direction = dest - origin;
+
         if (direction.y < 0 || direction.y > height)
             return false;
 
@@ -167,7 +165,7 @@ public class AISensor : MonoBehaviour
             vertices[vert++] = bottomLeft;
 
             currentAngle += deltaAngle;
-        }       
+        }
 
         for (int i = 0; i < numVertices; ++i)
         {

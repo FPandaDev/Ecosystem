@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class AIRabbitAction : AICharacterAction
 {
-    private AISensorRabbit sensor;
-
     private void Start()
     {
         this.LoadComponent();
     }
 
-    public override void LoadComponent()
+    protected override void LoadComponent()
     {
         base.LoadComponent();
-        sensor = _sensor as AISensorRabbit;
     }
 
     public override void Eat()
     {
-        sensor.foodTarget.GetComponent<Food>().IsBeingEaten();
+        animal.ChangeState(State.EATING);
+        ((AIRabbitSensor)sensor).foodTarget.GetComponent<Food>().IsBeingEaten();
     }
 }

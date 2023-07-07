@@ -21,11 +21,11 @@ public class Food : MonoBehaviour
 
         if (durabiltyCurrent <= 0)
         {
-            foreach (Rabbit rabbit in rabbits)
-            {
-                rabbit.isEating = false;
-            }
-             
+            //foreach (Rabbit rabbit in rabbits)
+            //{
+            //    rabbit.isEating = false;
+            //}
+
             Destroy(gameObject);
         }
     }
