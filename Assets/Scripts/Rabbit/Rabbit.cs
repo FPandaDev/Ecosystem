@@ -9,13 +9,9 @@ public class Rabbit : Animal
         LoadComponent();
     }
 
-    private void Update()
-    {
-        UpdateHunger();
-    }
-
     protected override void LoadComponent()
     {
         hungerCurrent = hungerLevel;
+        aiSensor = GetComponent<AIRabbitSensor>();
     }
 }

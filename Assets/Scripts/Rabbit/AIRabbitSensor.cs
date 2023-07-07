@@ -18,18 +18,17 @@ public class AIRabbitSensor : AISensor
         get
         {
             if (foodTarget != null)
-                return Vector3.Distance(foodTarget.transform.position, transform.position) < 2.5f;
+                return Vector3.Distance(foodTarget.transform.position, transform.position) < 1.5f;
             else
                 return false;
         }
     }
-
     public bool InRangeMate
     {
         get
         {
             if (mateTarget != null)
-                return Vector3.Distance(mateTarget.transform.position, transform.position) < 2.5f;
+                return Vector3.Distance(mateTarget.transform.position, transform.position) < 1.5f;
             else
                 return false;
         }
@@ -97,12 +96,16 @@ public class AIRabbitSensor : AISensor
         listFoxs.Clear();
 
         foodTarget = null;
-        mateTarget = null;
 
-        if (predatorTarget != null && Vector3.Distance(predatorTarget.transform.position, transform.position) > distance)
+        if (!InRangeMate)
         {
-            predatorTarget = null;
-        }
+            mateTarget = null;
+        }     
+
+        //if (predatorTarget != null && Vector3.Distance(predatorTarget.transform.position, transform.position) > distance)
+        //{
+        //    predatorTarget = null;
+        //}
     }
 
     private GameObject GOLessDistance(List<GameObject> list)

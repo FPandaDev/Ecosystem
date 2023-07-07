@@ -40,6 +40,7 @@ public class AIRabbitVehicle : AICharacterVehicle
     // WANDER FUNCTIONS //
     public override void MoveToPositionWander()
     {
+        agent.isStopped = false;
         animal.ChangeState(State.WANDER);
 
         float dist = (transform.position - PositionWander).magnitude;

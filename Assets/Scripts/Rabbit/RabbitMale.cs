@@ -6,6 +6,40 @@ public class RabbitMale : Rabbit
 {
     private void Update()
     {
-        UpdateHunger();
+        UpdateHungerLevel();
+    }
+
+    public override void UpdateReprodution()
+    {
+        ChangeState(State.REPRODUCTION);
+
+        if (stateCurrent == State.REPRODUCTION)
+        {
+            timeToPregmant += Time.deltaTime;          
+
+            if (timeToPregmant > ToPregmant)
+            {
+                isReproduction = false;
+            }
+        }
+    }
+
+    public override void ChangeState(State newState)
+    {
+        if (newState == stateCurrent) { return; }
+
+        stateCurrent = newState;
+
+        switch (newState)
+        {
+            case State.EATING:
+                break;
+
+            case State.REPRODUCTION:
+                ((AIRabbitSensor)aiSensor).mateTarget.GetComponent<RabbitFemale>().SetViewMate(this.transform);
+                isReproduction = true;
+                timeToPregmant = 0f;
+                break;
+        }
     }
 }

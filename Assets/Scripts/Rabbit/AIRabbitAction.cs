@@ -16,7 +16,17 @@ public class AIRabbitAction : AICharacterAction
 
     public override void Eat()
     {
-        animal.ChangeState(State.EATING);
-        ((AIRabbitSensor)sensor).foodTarget.GetComponent<Food>().IsBeingEaten();
+        //animal.ChangeState(State.EATING);
+        agent.isStopped = true;
+        animal.UpdateHunger();
+
+        ((AIRabbitSensor)sensor).foodTarget.GetComponent<Food>().IsBeingEaten();      
+    }
+
+    public override void Reproduction()
+    {
+        //animal.ChangeState(State.REPRODUCTION);
+        agent.isStopped = true;
+        animal.UpdateReprodution();
     }
 }

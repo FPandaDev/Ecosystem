@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &770703652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animal: {fileID: 0}
   sensor: {fileID: 0}
+  agent: {fileID: 0}
 --- !u!114 &770703655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,13 +640,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateCurrent: 0
-  hungerLevel: 100
+  hungerLevel: 1000
   hungerLevelMin: 30
   hungerLevelMax: 85
   hungerCurrent: 0
   hasHunger: 0
   hasHungeHigh: 0
+  ToPregmant: 5
   timeToPregmant: 5
+  isReproduction: 0
   heatTime: 10
   gestationTime: 15
   inHeat: 0
@@ -1048,13 +1051,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateCurrent: 0
-  hungerLevel: 100
+  hungerLevel: 1000
   hungerLevelMin: 30
   hungerLevelMax: 85
   hungerCurrent: 0
   hasHunger: 0
   hasHungeHigh: 0
+  ToPregmant: 5
   timeToPregmant: 5
+  isReproduction: 0
 --- !u!114 &1359459604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,6 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animal: {fileID: 0}
   sensor: {fileID: 0}
+  agent: {fileID: 0}
 --- !u!114 &1359459607
 MonoBehaviour:
   m_ObjectHideFlags: 0

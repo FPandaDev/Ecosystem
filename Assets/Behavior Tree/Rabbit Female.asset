@@ -22,18 +22,22 @@ MonoBehaviour:
       variableStartIndex: 
       JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(302,46)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(-1,112)"},"ID":1,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-1.5,103)"},"ID":2,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-598.2529,134.47168)"},"ID":3,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"NotViewEnemy","NodeData":{"Offset":"(-104.854126,236.666748)"},"ID":4,"Name":"Not
         View Enemy","Instant":true},{"Type":"CheckNotHunger","NodeData":{"Offset":"(-2.38096428,140)"},"ID":5,"Name":"Check
-        Not Hunger","Instant":true},{"Type":"VehicleWander","NodeData":{"Offset":"(99.91795,242.6283)"},"ID":6,"Name":"Vehicle
-        Wander","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-197.236816,134.558823)"},"ID":7,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"NotViewEnemy","NodeData":{"Offset":"(-99.01565,236.148987)"},"ID":8,"Name":"Not
-        View Enemy","Instant":true},{"Type":"CheckHunger","NodeData":{"Offset":"(3.70845985,142.741165)"},"ID":9,"Name":"Check
-        Hunger","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(101.891945,241.621552)"},"ID":10,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-199.844879,108.055542)"},"ID":11,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"NotViewFood","NodeData":{"Offset":"(-96.96098,143.695129)"},"ID":12,"Name":"Not
-        View Food","Instant":true},{"Type":"VehicleWander","NodeData":{"Offset":"(104.204369,137.614777)"},"ID":13,"Name":"Vehicle
-        Wander","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(199.583328,110)"},"ID":14,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.555557,140)"},"ID":15,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"ViewFood","NodeData":{"Offset":"(-100,245.555511)"},"ID":16,"Name":"View
-        Food","Instant":true},{"Type":"NotDistanceFood","NodeData":{"Offset":"(-4.5,154)"},"ID":17,"Name":"Not
-        Distance Food","Instant":true},{"Type":"VehicleFood","NodeData":{"Offset":"(97.5,250)"},"ID":18,"Name":"Vehicle
-        Food","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(147.777771,141.111084)"},"ID":19,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"ViewFood","NodeData":{"Offset":"(-101.111633,152.96283)"},"ID":20,"Name":"View
-        Food","Instant":true},{"Type":"DistanceFood","NodeData":{"Offset":"(1.5,248)"},"ID":21,"Name":"Distance
-        Food","Instant":true},{"Type":"ActionEat","NodeData":{"Offset":"(98.9498,151.908936)"},"ID":22,"Name":"Action
-        Eat","Instant":true}]}]}]}]}]}]}}'
+        Not Hunger","Instant":true},{"Type":"CheckNotReproduction","NodeData":{"Offset":"(66.46635,192.830826)"},"ID":6,"Name":"Check
+        Not Reproduction","Instant":true},{"Type":"VehicleWander","NodeData":{"Offset":"(99.91795,242.6283)"},"ID":7,"Name":"Vehicle
+        Wander","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-197.236816,134.558823)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"NotViewEnemy","NodeData":{"Offset":"(-99.01565,236.148987)"},"ID":9,"Name":"Not
+        View Enemy","Instant":true},{"Type":"CheckHunger","NodeData":{"Offset":"(3.70845985,142.741165)"},"ID":10,"Name":"Check
+        Hunger","Instant":true},{"Type":"CheckNotReproduction","NodeData":{"Offset":"(71.8918,132.432556)"},"ID":11,"Name":"Check
+        Not Reproduction","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(101.891945,241.621552)"},"ID":12,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-199.844879,108.055542)"},"ID":13,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"NotViewFood","NodeData":{"Offset":"(-96.96098,143.695129)"},"ID":14,"Name":"Not
+        View Food","Instant":true},{"Type":"VehicleWander","NodeData":{"Offset":"(104.204369,137.614777)"},"ID":15,"Name":"Vehicle
+        Wander","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(199.583328,110)"},"ID":16,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-145.555557,140)"},"ID":17,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"ViewFood","NodeData":{"Offset":"(-100,245.555511)"},"ID":18,"Name":"View
+        Food","Instant":true},{"Type":"NotDistanceFood","NodeData":{"Offset":"(-4.5,154)"},"ID":19,"Name":"Not
+        Distance Food","Instant":true},{"Type":"VehicleFood","NodeData":{"Offset":"(97.5,250)"},"ID":20,"Name":"Vehicle
+        Food","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(147.777771,141.111084)"},"ID":21,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"ViewFood","NodeData":{"Offset":"(-101.111633,152.96283)"},"ID":22,"Name":"View
+        Food","Instant":true},{"Type":"DistanceFood","NodeData":{"Offset":"(1.5,248)"},"ID":23,"Name":"Distance
+        Food","Instant":true},{"Type":"ActionEat","NodeData":{"Offset":"(98.9498,151.908936)"},"ID":24,"Name":"Action
+        Eat","Instant":true}]}]}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(255.945786,153.513519)"},"ID":25,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CheckReproduction","NodeData":{"Offset":"(-104.344589,147.1555)"},"ID":26,"Name":"Check
+        Reproduction","Instant":true},{"Type":"ActionReproduction","NodeData":{"Offset":"(76.73645,187.696045)"},"ID":27,"Name":"Action
+        Reproduction","Instant":true}]}]}]}}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 

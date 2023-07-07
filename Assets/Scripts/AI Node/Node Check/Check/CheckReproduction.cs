@@ -4,13 +4,13 @@ using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
 [TaskCategory("AI/Check")]
-public class CheckNotHunger : AINodeCheck
+public class CheckReproduction : AINodeCheck
 {
     public override TaskStatus OnUpdate()
     {
         if (aiCharacterAction is AIRabbitAction)
         {
-            if (!((Rabbit)aiCharacterAction.animal).hasHunger)
+            if (((Rabbit)aiCharacterAction.animal).isReproduction)
             {
                 return TaskStatus.Success;
             }

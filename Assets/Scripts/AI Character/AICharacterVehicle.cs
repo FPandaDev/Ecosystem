@@ -5,16 +5,16 @@ using UnityEngine.AI;
 
 public class AICharacterVehicle : AICharacterControl
 {
-    public NavMeshAgent agent;
+    
 
     protected override void LoadComponent()
     {
-        base.LoadComponent();
-        agent = GetComponent<NavMeshAgent>();
+        base.LoadComponent();     
     }
 
     public virtual void MoveToPosition(Vector3 target)
     {
+        agent.isStopped = false;
         agent.SetDestination(target);
     }
 

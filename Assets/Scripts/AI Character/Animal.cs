@@ -20,22 +20,19 @@ public class Animal : MonoBehaviour
     public bool hasHungeHigh;
 
     [Header("IDLE")]
-    [SerializeField] protected float timeToPregmant = 5f;
+    [SerializeField] protected float ToPregmant = 5f;
+
+    public float timeToPregmant;
+
+    public bool isReproduction;
+
+    protected AISensor aiSensor;
 
     protected virtual void LoadComponent() { }
 
-    protected virtual void UpdateHunger()
+    protected virtual void UpdateHungerLevel()
     {
-        if (stateCurrent == State.EATING)
-        {
-            hungerCurrent += Time.deltaTime;
-
-            if (hungerCurrent >= hungerLevel)
-            {
-                hasHunger = false;
-            }
-        }
-        else
+        if (stateCurrent != State.EATING)
         {
             hungerCurrent -= Time.deltaTime;
 
@@ -43,11 +40,38 @@ public class Animal : MonoBehaviour
             hasHungeHigh = hungerCurrent <= hungerLevelMin;            
         }
     }
+    public virtual void UpdateHunger()
+    {
+        ChangeState(State.EATING);
 
-    public void ChangeState(State newState)
+        hungerCurrent += Time.deltaTime;
+
+        if (hungerCurrent >= hungerLevel)
+        {
+            hasHunger = false;
+        }
+    }
+
+    public virtual void UpdateReprodution()
+    {
+
+    }
+
+    public virtual void ChangeState(State newState)
     {
         if (newState == stateCurrent) { return; }
 
         stateCurrent = newState;
+
+        switch (newState)
+        {
+            case State.EATING:
+                break;
+
+            case State.REPRODUCTION:
+                isReproduction = true;
+                timeToPregmant = 0f;
+                break;
+        }
     }
 }

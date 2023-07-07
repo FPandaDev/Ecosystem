@@ -9,5 +9,13 @@ public class AICharacterAction : AICharacterControl
         base.LoadComponent();
     }
 
-    public virtual void Eat() { }
+    public virtual void Eat()
+    {
+
+    }
+
+    public virtual void Reproduction()
+    {
+
+    }
 }

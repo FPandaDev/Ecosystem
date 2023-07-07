@@ -4,7 +4,7 @@ using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
 [TaskCategory("AI/Action")]
-public class ActionEat : AINodeAction
+public class ActionReproduction : AINodeAction
 {
     public override TaskStatus OnUpdate()
     {
@@ -12,13 +12,12 @@ public class ActionEat : AINodeAction
         {
             //if (((AIRabbitSensor)aiCharacterControl.sensor).foodTarget != null)
             //{
-                ((AIRabbitAction)aiCharacterAction).Eat();
+            ((AIRabbitAction)aiCharacterAction).Reproduction();
 
-                //if (((Rabbit)aiCharacterAction.animal).isEating)
-                //    return TaskStatus.Running;
-                //else
-                //    return TaskStatus.Failure;
-            //}
+            //if (((Rabbit)aiCharacterAction.animal).isReproduction)
+            //    return TaskStatus.Running;
+            //else
+            //    return TaskStatus.Failure;
         }
         return TaskStatus.Success;
     }
