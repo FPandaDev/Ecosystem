@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GENDER { MALE, FEMALE }
 public enum State { WANDER, EATING, REPRODUCTION, SEARCHFOOD, SEARCHMATE, EVADE }
 
 public class Animal : MonoBehaviour
 {
     [Header("ATTRIBUTES")]
     [SerializeField] public State stateCurrent;
+    [SerializeField] public GENDER gender;
 
     [Header("HUNGER")]
     [SerializeField] protected float hungerLevel = 100f;
