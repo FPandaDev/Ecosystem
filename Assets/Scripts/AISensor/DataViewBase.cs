@@ -3,9 +3,6 @@ using UnityEngine;
 public class DataViewBase
 {
     #region RangeView
-    [Header("----- DrawGizmo ----- ")]
-    public bool IsDrawGizmo = false;
-
     [Header("----- RangeView -----")]
     [Range(0, 180)]
     public float angle = 30f;
@@ -116,5 +113,14 @@ public class DataViewBase
     public void CreateMesh()
     {
         mesh = CreateWedgeMesh();
+    }
+
+    public virtual void OnDrawGizmos()
+    {
+        if (mesh != null && Owner != null)
+        {
+            Gizmos.color = meshColor;
+            Gizmos.DrawMesh(mesh, Owner.transform.position, Owner.transform.rotation);
+        }
     }
 }

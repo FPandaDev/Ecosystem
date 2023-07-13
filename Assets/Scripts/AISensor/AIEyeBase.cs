@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AIEyeBase : MonoBehaviour
 {
+    public bool isDrawGizmos = false;
+
     public int scanFrequency = 30;
     protected float scanInterval;
     protected float scanTimer;
@@ -15,7 +17,7 @@ public class AIEyeBase : MonoBehaviour
 
     public int CountEnemyView = 0;
 
-    public List<GameObject> mateList = new List<GameObject>();
+    public List<Animal> mateList = new List<Animal>();
 
 
     public Animal animal { get; set; }
@@ -27,16 +29,6 @@ public class AIEyeBase : MonoBehaviour
 
     #region DISTANCE VIEWs
     #endregion
-
-    private void Start()
-    {
-        this.LoadComponent();
-    }
-
-    private void Update()
-    {
-        this.UpdateScan();
-    }
 
     public virtual void LoadComponent()
     {
@@ -119,15 +111,28 @@ public class AIEyeBase : MonoBehaviour
         }
         else
         {
-            float dist = (transform.position - _animal.transform.position).sqrMagnitude;
+            mateList.Add(_animal);
 
-
-            if (min_distMate > dist)
+            float minDist = float.MaxValue;
+            for (int i = 0; i < mateList.Count; i++)
             {
-                ViewMate = _animal;
-                min_distMate = dist;
-                //Memory = ViewEnemy.position;
+                float distance = Vector3.Distance(mateList[i].transform.position, transform.position);
+                if (distance < minDist)
+                {
+                    ViewMate = mateList[i];
+                    minDist = distance;
+                }
             }
+
+            //float dist = (transform.position - _animal.transform.position).sqrMagnitude;
+
+
+            //if (min_distMate > dist)
+            //{
+            //    ViewMate = _animal;
+            //    min_distMate = dist;
+            //    //Memory = ViewEnemy.position;
+            //}
 
             //if (ViewMate == null)
             //{
@@ -173,14 +178,5 @@ public class AIEyeBase : MonoBehaviour
         return true;
     }
 
-    private void OnDrawGizmos()
-    {
-        mainDataView.CreateMesh();
-
-        if (mainDataView.mesh)
-        {
-            Gizmos.color = mainDataView.meshColor;
-            Gizmos.DrawMesh(mainDataView.mesh, transform.position, transform.rotation);
-        }
-    }
+    
 }

@@ -67,8 +67,8 @@ public class AIRabbitSensor : AISensor
                 break;
 
             case "Fox":
-                //listFoxs.Add(obj);
-                //predatorTarget = GOLessDistance(listFoxs);
+                listFoxs.Add(obj);
+                predatorTarget = GOLessDistance(listFoxs);
                 break;
         }
     }
@@ -100,12 +100,12 @@ public class AIRabbitSensor : AISensor
         if (!animal.isReproduction || !InRangeMate)
         {
             mateTarget = null;
-        }     
+        }
 
-        //if (predatorTarget != null && Vector3.Distance(predatorTarget.transform.position, transform.position) > distance)
-        //{
-        //    predatorTarget = null;
-        //}
+        if (predatorTarget != null && (transform.position - predatorTarget.transform.position).magnitude > distance)
+        {
+            predatorTarget = null;
+        }
     }
 
     private GameObject GOLessDistance(List<GameObject> list)

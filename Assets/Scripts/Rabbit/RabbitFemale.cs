@@ -64,7 +64,7 @@ public class RabbitFemale : Rabbit
             timeToPregmant += Time.deltaTime;
             RotateMate();
 
-            if (timeToPregmant > ToPregmant)
+            if (timeToPregmant >= ToPregmant)
             {
                 isPregnant = true;
                 isReproduction = false;

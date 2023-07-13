@@ -39,6 +39,12 @@ public class AIRabbitVehicle : AICharacterVehicle
         MoveToPosition(((AIRabbitSensor)sensor).mateTarget.transform.position);
     }
 
+    public override void Evade()
+    {
+        animal.ChangeState(State.EVADE);
+        EvadeToPosition(((AIRabbitSensor)sensor).predatorTarget.transform.position);
+    }
+
     public override void Wander()
     {
         animal.ChangeState(State.WANDER);
@@ -66,18 +72,20 @@ public class AIRabbitVehicle : AICharacterVehicle
 
         if (dist <= 2f)
         {
-            CalculatePositionWander();
+            //CalculatePositionWander();
+            PositionWander = RandomNavmeshPosition();
         }
         else if (Framerate > arrayRate[index])
         {
             index++;
             index = index % arrayRate.Length;
-            CalculatePositionWander();
+            //CalculatePositionWander();
+            PositionWander = RandomNavmeshPosition();
             Framerate = 0;
         }
 
         Framerate += Time.deltaTime;
-        UpdatePath(PositionWander);
+        //UpdatePath(PositionWander);
     }
 
     public override void CalculatePositionWander()
@@ -130,5 +138,19 @@ public class AIRabbitVehicle : AICharacterVehicle
         {
             arrayRate[i] = Random.Range(10, 15);
         }
+    }
+
+    private Vector3 RandomNavmeshPosition()
+    {
+        // Obtener una posición aleatoria dentro del NavMesh
+        NavMeshHit hit;
+
+        Vector3 randomPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(Random.insideUnitSphere * 10f, out hit, 15f, NavMesh.AllAreas))
+        {
+            randomPosition = hit.position;
+        }
+        agent.SetDestination(randomPosition);
+        return randomPosition;
     }
 }

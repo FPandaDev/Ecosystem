@@ -20,6 +20,8 @@ public class AICharacterVehicle : AICharacterControl
 
     public virtual void EvadeToPosition(Vector3 target)
     {
+        agent.isStopped = false;
+
         Vector3 dir = transform.position - target;
         Vector3 newPos = transform.position + dir.normalized * 3;
 
@@ -31,6 +33,7 @@ public class AICharacterVehicle : AICharacterControl
     public virtual void SearchFood() { }
     public virtual void SearchMate() { }
     public virtual void Wander() { }
+    public virtual void Evade() { }
     public virtual void MoveToPositionWander() { }
     public virtual void CalculatePositionWander() { }
 }
