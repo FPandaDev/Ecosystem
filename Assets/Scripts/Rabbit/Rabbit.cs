@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Rabbit : Animal
 {
-    private void Start()
-    {
-        LoadComponent();
-    }
+    
 
     protected override void LoadComponent()
     {
-        hungerCurrent = hungerLevel;
+        base.LoadComponent();   
         aiSensor = GetComponent<AIRabbitSensor>();
     }
 }

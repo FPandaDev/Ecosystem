@@ -59,7 +59,7 @@ public class AIRabbitSensor : AISensor
                 break;
 
             case "Rabbit":
-                if (animal is RabbitMale && !animal.isReproduction)// && animal.age == Age.YOUNG && !animal.HungerPriority)
+                if (animal is RabbitMale && !animal.isReproduction  && animal.age == AGE.YOUNG)// && !animal.HungerPriority)
                 {
                     listRabbits.Add(obj);
                     mateTarget = SetCouple(listRabbits);
@@ -137,7 +137,7 @@ public class AIRabbitSensor : AISensor
             if (rabbit != null)
             {
                 //if (rabbit.age == Age.YOUNG && rabbit.InHeat && !rabbit.IsPregnant && !rabbit.isMate && !rabbit.isEating)
-                if (rabbit.inHeat && !rabbit.isPregnant && rabbit.stateCurrent != State.EATING && !rabbit.isReproduction)
+                if (rabbit.inHeat && !rabbit.isPregnant && rabbit.stateCurrent != STATE.EATING && !rabbit.isReproduction)
                 {
                     list.Add(rabbit.gameObject);
                 }

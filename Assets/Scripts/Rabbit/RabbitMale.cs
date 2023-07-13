@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class RabbitMale : Rabbit
 {
+    private void Start()
+    {
+        LoadComponent();
+    }
+
     private void Update()
     {
+        UpdateAge();
         UpdateHungerLevel();
+    }
+
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
     }
 
     public override void UpdateReprodution()
     {
-        ChangeState(State.REPRODUCTION);
+        ChangeState(STATE.REPRODUCTION);
 
-        if (stateCurrent == State.REPRODUCTION)
+        if (stateCurrent == STATE.REPRODUCTION)
         {
             timeToPregmant += Time.deltaTime;          
 
@@ -24,13 +35,13 @@ public class RabbitMale : Rabbit
         }
     }
 
-    public override void ChangeState(State newState)
+    public override void ChangeState(STATE newState)
     {
         if (newState == stateCurrent) { return; }
 
         stateCurrent = newState;
 
-        if (newState != State.REPRODUCTION)
+        if (newState != STATE.REPRODUCTION)
         {
             timeToPregmant = 0f;
             isReproduction = false;
@@ -38,10 +49,10 @@ public class RabbitMale : Rabbit
 
         switch (newState)
         {
-            case State.EATING:
+            case STATE.EATING:
                 break;
 
-            case State.REPRODUCTION:
+            case STATE.REPRODUCTION:
                 ((AIRabbitSensor)aiSensor).mateTarget.GetComponent<RabbitFemale>().SetViewMate(this);
                 isReproduction = true;
                 timeToPregmant = 0f;

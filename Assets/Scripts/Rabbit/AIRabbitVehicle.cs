@@ -20,6 +20,8 @@ public class AIRabbitVehicle : AICharacterVehicle
     {
         LoadComponent();
         ResetArray();
+
+        PositionWander = RandomNavmeshPosition();
     }
 
     protected override void LoadComponent()
@@ -35,31 +37,31 @@ public class AIRabbitVehicle : AICharacterVehicle
 
     public override void MoveToMate()
     {
-        animal.ChangeState(State.SEARCHMATE);
+        animal.ChangeState(STATE.SEARCHMATE);
         MoveToPosition(((AIRabbitSensor)sensor).mateTarget.transform.position);
     }
 
     public override void Evade()
     {
-        animal.ChangeState(State.EVADE);
+        animal.ChangeState(STATE.EVADE);
         EvadeToPosition(((AIRabbitSensor)sensor).predatorTarget.transform.position);
     }
 
     public override void Wander()
     {
-        animal.ChangeState(State.WANDER);
+        animal.ChangeState(STATE.WANDER);
         MoveToPositionWander();
     }
 
     public override void SearchFood()
     {
-        animal.ChangeState(State.SEARCHFOOD);
+        animal.ChangeState(STATE.SEARCHFOOD);
         MoveToPositionWander();
     }
 
     public override void SearchMate()
     {
-        animal.ChangeState(State.SEARCHMATE);
+        animal.ChangeState(STATE.SEARCHMATE);
         MoveToPositionWander();
     }
 

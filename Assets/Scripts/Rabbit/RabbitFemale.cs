@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class RabbitFemale : Rabbit
 {
@@ -17,11 +16,36 @@ public class RabbitFemale : Rabbit
 
     private RabbitMale target;
 
+    [Header("PREFABS")]
+    [SerializeField] private Rabbit rabbitMale;
+    [SerializeField] private Rabbit rabbitFemale;
+
+    private void Start()
+    {
+        LoadComponent();
+
+        heatCurrent = 0f;
+        gestationCurrent = 0f;
+
+        inHeat = false;
+        isPregnant = false;
+    }
+
     private void Update()
     {
+        UpdateAge();
         UpdateHungerLevel();
-        UpdateHeat();
-        UpdatePregmant();
+
+        if (age == AGE.YOUNG)
+        {
+            UpdateHeat();
+            UpdatePregmant();
+        }    
+    }
+
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
     }
 
     private void UpdateHeat()
@@ -49,6 +73,8 @@ public class RabbitFemale : Rabbit
             if (gestationCurrent >= gestationTime)
             {
                 // Función para crear conejos
+                CreateRabbits();
+                
 
                 gestationCurrent = 0f;
                 inHeat = false;
@@ -59,7 +85,7 @@ public class RabbitFemale : Rabbit
 
     public override void UpdateReprodution()
     {       
-        if (stateCurrent == State.REPRODUCTION)
+        if (stateCurrent == STATE.REPRODUCTION)
         {
             timeToPregmant += Time.deltaTime;
             RotateMate();
@@ -80,7 +106,7 @@ public class RabbitFemale : Rabbit
     public void SetViewMate(RabbitMale _target)
     {
         target = _target;
-        ChangeState(State.REPRODUCTION);      
+        ChangeState(STATE.REPRODUCTION);      
     }
 
     private void RotateMate()
@@ -90,7 +116,21 @@ public class RabbitFemale : Rabbit
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 
-    public override void ChangeState(State newState)
+    private void CreateRabbits()
+    {
+        int count = Random.Range(1, 5);
+
+        for (int i = 0; i < count; i++)
+        {
+            bool gender = Random.value < 0.5f;
+
+            Debug.Log("crear conejos");
+            Rabbit rabbit = Instantiate(gender ? rabbitMale : rabbitFemale, transform.position, Quaternion.identity);
+            rabbit.age = AGE.CHILDREN;
+        }
+    }
+
+    public override void ChangeState(STATE newState)
     {
         if (newState == stateCurrent) { return; }
 
@@ -98,10 +138,10 @@ public class RabbitFemale : Rabbit
 
         switch (newState)
         {
-            case State.EATING:
+            case STATE.EATING:
                 break;
 
-            case State.REPRODUCTION:
+            case STATE.REPRODUCTION:
                 isReproduction = true;
                 timeToPregmant = 0f;
                 break;
