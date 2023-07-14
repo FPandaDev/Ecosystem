@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Fox : Animal
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        LoadComponent();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        UpdateAge();
+        UpdateHungerLevel();
+    }
+
+    protected override void LoadComponent()
+    {
+        base.LoadComponent();
+        aiSensor = GetComponent<AIFoxSensor>();
     }
 }

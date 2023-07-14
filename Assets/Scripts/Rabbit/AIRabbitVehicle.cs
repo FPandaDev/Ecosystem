@@ -16,12 +16,15 @@ public class AIRabbitVehicle : AICharacterVehicle
     protected int indexPath = 0;
     protected float elapsed = 0.0f;
 
+    private SpeedDistanceEnemy speedDistanceEnemy;
+
     private void Start()
     {
         LoadComponent();
         ResetArray();
 
         PositionWander = RandomNavmeshPosition();
+        speedDistanceEnemy = GetComponent<SpeedDistanceEnemy>();
     }
 
     protected override void LoadComponent()
@@ -44,6 +47,10 @@ public class AIRabbitVehicle : AICharacterVehicle
     public override void Evade()
     {
         animal.ChangeState(STATE.EVADE);
+
+        float speed = speedDistanceEnemy.CalculateFuzzy(((AIRabbitSensor)sensor).DistanceEnemy);       
+        agent.speed = speed;
+
         EvadeToPosition(((AIRabbitSensor)sensor).predatorTarget.transform.position);
     }
 

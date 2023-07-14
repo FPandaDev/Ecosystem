@@ -33,6 +33,13 @@ public class AIRabbitSensor : AISensor
                 return false;
         }
     }
+    public float DistanceEnemy
+    {
+        get
+        {
+            return (this.predatorTarget != null) ? (transform.position - this.predatorTarget.transform.position).magnitude : -1;
+        }
+    }
 
     private void Start()
     {

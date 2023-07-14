@@ -19,7 +19,11 @@ public class VehicleSearchFood : AINodeVehicle
         {
             ((AIRabbitVehicle)aiCharacterControl).SearchFood();
         }
-        
+        else if (aiCharacterControl is AIFoxVehicle)
+        {
+            ((AIFoxVehicle)aiCharacterControl).SearchFood();
+        }
+
         return TaskStatus.Success;
     }
 }

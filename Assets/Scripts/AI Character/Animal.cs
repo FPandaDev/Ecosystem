@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,9 @@ public class Animal : MonoBehaviour
 
     protected AISensor aiSensor;
 
+    private float progress = 0f;
+    private float duration = 1.5f;
+
     protected virtual void LoadComponent()
     {
         hungerCurrent = hungerLevel;
@@ -53,7 +57,13 @@ public class Animal : MonoBehaviour
         }
         else if (ageCurrent >= ageMin && ageCurrent < ageMax)
         {
-            transform.localScale = Vector3.one;
+            if (progress < 1f)
+            {
+                progress += Time.deltaTime / duration;
+                float currentValue = Mathf.Lerp(0.5f, 1f, progress);
+
+                transform.localScale = Vector3.one * currentValue;
+            }           
             age = AGE.YOUNG;
         }
         else if (ageCurrent >= ageMax)

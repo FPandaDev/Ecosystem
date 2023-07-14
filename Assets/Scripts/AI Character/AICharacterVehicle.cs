@@ -15,6 +15,7 @@ public class AICharacterVehicle : AICharacterControl
     public virtual void MoveToPosition(Vector3 target)
     {
         agent.isStopped = false;
+        agent.speed = 3.5f;
         agent.SetDestination(target);
     }
 

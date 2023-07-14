@@ -20,7 +20,11 @@ public class VehicleWander : AINodeVehicle
         {
             ((AIRabbitVehicle)aiCharacterControl).Wander();
         }
-            
+        else if (aiCharacterControl is AIFoxVehicle)
+        {
+            ((AIFoxVehicle)aiCharacterControl).Wander();
+        }
+
         return TaskStatus.Success;
     }
 }

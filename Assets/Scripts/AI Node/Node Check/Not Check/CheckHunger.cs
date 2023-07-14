@@ -15,6 +15,13 @@ public class CheckHunger : AINodeCheck
                 return TaskStatus.Success;
             }
         }
+        else if (aiCharacterAction is AIFoxAction)
+        {
+            if (((Fox)aiCharacterAction.animal).hasHunger)
+            {
+                return TaskStatus.Success;
+            }
+        }
         return TaskStatus.Failure;
     }
 }

@@ -75,7 +75,7 @@ public class AISensor : MonoBehaviour
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest - origin;
 
-        if (direction.y < 0 || direction.y > height)
+        if (direction.y < -0.5f || direction.y > height)
             return false;
 
         // Check angle

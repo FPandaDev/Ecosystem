@@ -9,17 +9,14 @@ public class ActionEat : AINodeAction
     public override TaskStatus OnUpdate()
     {
         if (aiCharacterAction is AIRabbitAction)
-        {
-            //if (((AIRabbitSensor)aiCharacterControl.sensor).foodTarget != null)
-            //{
-                ((AIRabbitAction)aiCharacterAction).Eat();
-
-                //if (((Rabbit)aiCharacterAction.animal).isEating)
-                //    return TaskStatus.Running;
-                //else
-                //    return TaskStatus.Failure;
-            //}
+        {          
+            ((AIRabbitAction)aiCharacterAction).Eat();
         }
+        else if (aiCharacterAction is AIFoxAction)
+        {
+            ((AIFoxAction)aiCharacterAction).Eat();
+        }
+
         return TaskStatus.Success;
     }
 }

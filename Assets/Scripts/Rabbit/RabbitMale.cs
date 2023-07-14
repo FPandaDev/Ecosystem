@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RabbitMale : Rabbit
 {
+    public Image fillHunger;
+
     private void Start()
     {
         LoadComponent();
@@ -13,6 +16,9 @@ public class RabbitMale : Rabbit
     {
         UpdateAge();
         UpdateHungerLevel();
+
+        fillHunger.fillAmount = hungerCurrent / hungerLevel;
+        stateText.text = stateCurrent.ToString();
     }
 
     protected override void LoadComponent()

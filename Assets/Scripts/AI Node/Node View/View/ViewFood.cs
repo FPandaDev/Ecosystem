@@ -16,6 +16,14 @@ public class ViewFood : AINodeView
             }
 
         }
+        else if (aiCharacterControl is AIFoxVehicle)
+        {
+            if (((AIFoxSensor)aiCharacterControl.sensor).foodTarget != null)
+            {
+                return TaskStatus.Success;
+            }
+
+        }
         return TaskStatus.Failure;
     }
 }

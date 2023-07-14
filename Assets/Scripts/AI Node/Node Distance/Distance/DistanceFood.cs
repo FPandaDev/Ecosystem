@@ -16,6 +16,14 @@ public class DistanceFood : AINodeDistance
             }
 
         }
+        else if (aiCharacterControl is AIFoxVehicle)
+        {
+            if (((AIFoxSensor)aiCharacterControl.sensor).InRangeFood)
+            {
+                return TaskStatus.Success;
+            }
+
+        }
         return TaskStatus.Failure;
     }
 }

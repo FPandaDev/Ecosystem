@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RabbitFemale : Rabbit
 {
@@ -20,6 +21,10 @@ public class RabbitFemale : Rabbit
     [SerializeField] private Rabbit rabbitMale;
     [SerializeField] private Rabbit rabbitFemale;
 
+    public Image fillHunger;
+    public Image fillHeat;
+    public Image fillGestation;
+
     private void Start()
     {
         LoadComponent();
@@ -29,6 +34,9 @@ public class RabbitFemale : Rabbit
 
         inHeat = false;
         isPregnant = false;
+
+        fillHeat.gameObject.SetActive(false);
+        fillGestation.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -36,8 +44,25 @@ public class RabbitFemale : Rabbit
         UpdateAge();
         UpdateHungerLevel();
 
+        fillHunger.fillAmount = hungerCurrent / hungerLevel;
+        stateText.text = stateCurrent.ToString();
+
         if (age == AGE.YOUNG)
-        {
+        {          
+            if (!isPregnant)
+            {
+                fillHeat.gameObject.SetActive(true);
+                fillGestation.gameObject.SetActive(false);
+            }
+            else if (isPregnant)
+            {
+                fillHeat.gameObject.SetActive(false);
+                fillGestation.gameObject.SetActive(true);
+            }
+
+            fillHeat.fillAmount = heatCurrent / heatTime;
+            fillGestation.fillAmount = gestationCurrent / gestationTime;
+
             UpdateHeat();
             UpdatePregmant();
         }    
@@ -56,7 +81,7 @@ public class RabbitFemale : Rabbit
 
             if (heatCurrent >= heatTime)
             {
-                heatCurrent = 0f;
+                //heatCurrent = 0f;
                 inHeat = true;
             }        
             //heatCurrent = Mathf.Clamp(heatCurrent, 0f, heatTime);
@@ -92,7 +117,9 @@ public class RabbitFemale : Rabbit
 
             if (timeToPregmant >= ToPregmant)
             {
+                heatCurrent = 0f;
                 isPregnant = true;
+                inHeat = false;              
                 isReproduction = false;
             }
 

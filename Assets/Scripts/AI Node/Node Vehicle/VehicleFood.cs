@@ -16,7 +16,15 @@ public class VehicleFood : AINodeVehicle
         //if (((AIRabbitVehicle)aiCharacterControl).animal.IsDead)
         //    return TaskStatus.Failure;
 
-        ((AIRabbitVehicle)aiCharacterControl).MoveToFood();
+        if (aiCharacterControl is AIRabbitVehicle)
+        {
+            ((AIRabbitVehicle)aiCharacterControl).MoveToFood();
+        }
+        else if (aiCharacterControl is AIFoxVehicle)
+        {
+            ((AIFoxVehicle)aiCharacterControl).MoveToFood();
+        }
+
         return TaskStatus.Success;
     }
 }
